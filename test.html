@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <h1>Listing Entreprise</h1>
+    <p>ceci est la description de ma page</p>
+    <h2>Tableau des entreprises</h2>
+    <table>
+        <tr>
+            <th>Nom de l'entreprise</th>
+            <th>lien du détail</th>
+        </tr>
+        <tr>
+            <td>Amazon</td>
+            <td><a href="detail.html">lien</a></td>
+        </tr>
+        <tr>
+            <td>Microsoft</td>
+            <td><a href="detail.html">lien</a></td>
+        </tr>
+        <tr>
+            <td>Nvidia</td>
+            <td><a href="detail.html">lien</a></td>
+        </tr>
+    </table>
+    <footer>
+        <p>Copyright 2024</p>
+    </footer>
+    <script>
+        fetch('https://localhost:8080/api/entreprises')
+            .then(response => response.json())
+            .then(data => {
+                 console.log(data);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des données:', error);
+            });
+            
+    </script>
+</body>
+</html>

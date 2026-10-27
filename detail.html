@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <h1>Détail Entreprise</h1>
+    <p>ceci est la description de ma page de détail d'une entreprise</p>
+    <p>Entreprise Amazon</p>
+
+    <h2>détail des employés</h2>
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>type de poste</th>
+            <th>expérience</th>
+        </tr>
+        <tr>
+            <td>Robert</td>
+            <td>Manager</td>
+            <td>15 ans</td>
+        </tr>
+        <tr>
+            <td>Gérard</td>
+            <td>Développeur</td>
+            <td>2 ans</td>
+        </tr>
+        <tr>
+            <td>Géraldine</td>
+            <td>Hotesse d'accueil</td>
+            <td>5 ans</td>
+        </tr>
+    </table>
+
+    <form id="myForm">
+        <label for="name">Nom:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom"><br><br>
+
+        <div>
+            <div>
+                <label for="exp">Expérience pro:</label>
+            </div>
+            <div>
+                <input type="radio" id="option1" name="option" value="option1">
+                <label for="option1"> - 1an</label><br>
+                <input type="radio" id="option2" name="option" value="option2">
+                <label for="option2">entre 1 et 10 ans</label><br>
+                <input type="radio" id="option3" name="option" value="option3">
+                <label for="option3">+ 10 ans</label><br>
+            </div>
+        </div>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="button" onclick="myFunction()">Envoyer</button>
+    </form>
+    <footer id="footer">
+        <p>Copyright 2024</p>
+    </footer>
+    <script>
+        function myFunction() {
+           var myForm = document.getElementById("myForm");
+        
+           if(!document.getElementById("myTable")){
+            //création du tableau
+            var myTab = document.createElement("table");
+            
+                    
+            myTab.border = "1";
+            myTab.setAttribute("id", "myTable");
+            var headerRow = myTab.insertRow();
+            var headerCell1 = headerRow.insertCell();
+            headerCell1.innerHTML = "Nom";
+            var headerCell2 = headerRow.insertCell();
+            headerCell2.innerHTML = "Prénom";
+            var headerCell3 = headerRow.insertCell();
+            headerCell3.innerHTML = "Message";
+            
+           }
+           else {
+            myTab = document.getElementById("myTable");
+           }
+           
+            
+
+            var row = myTab.insertRow();
+            var cell1 = row.insertCell();
+            cell1.innerHTML = document.getElementById("name").value;
+            var cell2 = row.insertCell();
+            cell2.innerHTML = document.getElementById("prenom").value;
+            var cell3 = row.insertCell();
+            cell3.innerHTML = document.getElementById("message").value;
+
+            myFooter = document.getElementById("footer");
+            document.body.removeChild(myFooter);
+            document.body.appendChild(myTab);
+            document.body.appendChild(myFooter);
+
+            
+        }
+
+    </script>
+</body>
+</html>
