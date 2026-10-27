@@ -1,14 +1,15 @@
-package com.example.demo.application.port.in;
+package com.merchant.application.port.in;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 import org.springframework.stereotype.Component;
 
-import com.example.demo.domain.model.Entreprise;
+import com.merchant.model.Client;
 
 @Component
-public interface EntrepriseServicePort {
-    List<Entreprise> consulterEntreprises();
+public interface ClientServicePort {
+    ArrayList<Client> consulterClients();
 
-    void creerEntreprise(Entreprise entreprise);
+    void creerClient(Client client);
 }

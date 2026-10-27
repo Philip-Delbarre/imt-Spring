@@ -6,24 +6,26 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.application.port.out.ClientRepositoryPort;
-import com.example.demo.domain.model.Client;
+import com.merchant.application.port.out.ClientRepositoryPort;
+import com.merchant.domain.model.Client;
 
 @Repository
 public class ClientPersistenceAdapter implements ClientRepositoryPort {
     @Autowired 
     private ClientRepository repository;
 
+    // retourne une lsite de client
     @Override
-    public List<Client> findAll() {
-        List<ClientJpaEntity> clientsBdd = repository.findAll();
-        List<Client> clients = new ArrayList<>();
+    public ArrayList <Client> findAll() {
+        ArrayList <ClientJpaEntity> clientsBdd = repository.findAll();
+        ArrayList <Client> clients = new ArrayList<>();
         for(ClientJpaEntity entity : clientsBdd) {
             clients.add(toDomain(entity));
         }
         return clients;
     }
-
+    // enregistre des clients
+    
     @Override
     public void save(Client client) {
         repository.save(new ClientJpaEntity(

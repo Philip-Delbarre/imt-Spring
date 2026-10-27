@@ -1,20 +1,23 @@
 package com.merchant.adapter.in.rest;
 
 import java.util.ArrayList;
-import java.util.List;
+
+
+import com.merchant.model.Produit;
 
 public class CreationClientDTO {
     private int idClient;
     private String nom;
+    private String prenom;
     private String eMail;
-    private ArrayList<Produit> produits; //# on attache une liste de  plursiurs produit à un client !
+    private ArrayList<Integer> produits; //# on attache une liste de  plursiurs produit à un client !
 
-    public Client (int idClient, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
+    public CreationClientDTO (int idClient, String nom, String prenom, String eMail, ArrayList<Integer> produits) {
         this.idClient = idClient;
         this.nom = nom;
         this.prenom = prenom;
         this.eMail = eMail;
-        this.produit = produits;
+        this.produits = produits;
     }
     
     public CreationClientDTO() { // le constructeur est vide , !!!!!!
@@ -34,6 +37,16 @@ public class CreationClientDTO {
         return nom;
     }
 
+     public String getPrenom () {
+        return prenom;
+    }
+
+    public String getEmail () {
+        return eMail;
+    }
+
+
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -44,7 +57,7 @@ public class CreationClientDTO {
 
     // attention c'est une affectation pas un enrichissmetn de liste !
 
-    public void setProduits (ArrayList<String> produits ) {
+    public void setProduits (ArrayList<Integer> produits ) {
         this.produits = produits ;
     }
 }

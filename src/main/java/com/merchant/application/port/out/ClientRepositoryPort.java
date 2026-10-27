@@ -1,8 +1,8 @@
-package com.example.demo.application.port.out;
+package com.merchant.application.port.out;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import com.example.demo.domain.model.Client;
+import com.merchant.model.Client;
 
 public interface ClientRepositoryPort {
     ArrayList<Client> findAll();

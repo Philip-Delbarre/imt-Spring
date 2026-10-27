@@ -1,9 +1,9 @@
-package com.example.demo.application.port.out;
+package com.merchant.application.port.out;
 
 import java.util.List;
 
-import com.example.demo.domain.model.Employe;
+import com.merchant.model.Produit;
 
-public interface EmployePort {
-    List<Employe> findByIds(List<Integer> ids);
+public interface ProduitPort {
+    List<Produit> findByIds(List<Integer> ids);
 }

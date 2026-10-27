@@ -2,44 +2,49 @@ package com.merchant.model;
 
 
 public class Produit {
-    private int id;
-    private String produit;
+    private int idProduct;
+    private String productName;
     private String description;
     private float price;
 
-    public Produit (int id, String produit, String description, float price ) {
-        this.id = id;
-        this.nom = produit;
+    public Produit (int idProduct, String productName, String description, float price ) {
+        this.idProduct = idProduct;
+        this.productName = productName;
         this.description = description ;
         this.price = price;
     }
 
-    public int getId() {
-        return this.id;
+    public int getIdProduct() {
+        return idProduct;
     }
 
-    public String getProduit() {
-        return this.produit;
+    public String getProductName() {
+        return productName;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public float getPrice() {
-        return this.price;
+        return price;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public void setDescription(String description ) {
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setPrice (float price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
+    
 }

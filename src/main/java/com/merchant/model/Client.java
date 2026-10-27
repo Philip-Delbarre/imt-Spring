@@ -6,23 +6,24 @@ public class Client {
 
     private int id;
     private String nom;
+    private String prenom;
     private String eMail;
     private ArrayList<Produit> produits; //# on attache une liste de  plursiurs produit à un client !
 
-    public Client (int id, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
-        this.id = id;
+    public Client (int idClient, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
+        this.id = idClient;
         this.nom = nom;
         this.prenom = prenom;
         this.eMail = eMail;
-        this.produit = produits;
+        this.produits = produits;
     }
 
-    public int getId() {
+    public int getIdClient() {
         return this.id;
     }
 
     public String getPrenom() {
-        return nom;
+        return prenom;
     }
     
     public String getNom() {
@@ -47,7 +48,7 @@ public class Client {
     }
 
 
-    public ArrayList<String> getProduits ()
+    public ArrayList<Produit> getProduits ()
     {
        return produits;}
 

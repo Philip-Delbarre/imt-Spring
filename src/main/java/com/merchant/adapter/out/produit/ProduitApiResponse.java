@@ -1,25 +1,48 @@
-package com.merchant.adapter.out.employe;
+package com.merchant.adapter.out.produit;
 
-public class EmployeApiResponse {
-    private int id;
-    private String nom;
+public class ProduitApiResponse {
+    private int idProduct;
+    private String productName;
+    private String description;
+    private float price;
 
-    public EmployeApiResponse() {
+   
+    public ProduitApiResponse() {
     }
 
-    public int getId() {
-        return id;
+
+
+    public void setIdProduct(int idProduct) {
+        this.idProduct = idProduct;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getNom() {
-        return nom;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setPrice(float price) {
+        this.price = price;
     }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getIdProduct() {
+        return idProduct;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+  
 }

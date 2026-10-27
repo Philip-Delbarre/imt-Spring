@@ -15,7 +15,7 @@ import jakarta.ws.rs.ApplicationPath;
 @ApplicationPath("api")
 //indique à Spring que le composant qui va être créé qu'il s'agit d'une configuration globale
 @Configuration
-public class ClientConfig extends ResourceConfig {
+public class JerseyConfig extends ResourceConfig {
     public JerseyConfig(){
         //enregistre la classe où les webservices vont être exposés
         register(ClientPresentation.class);

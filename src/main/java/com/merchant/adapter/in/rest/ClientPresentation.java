@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.application.port.in.ClientServicePort;
-import com.example.demo.application.port.out.EmployePort;
-import com.example.demo.domain.model.Employe;
+import com.merchant.application.port.in.ClientServicePort;
+import com.merchant.application.port.out.*;
+
 import com.merchant.model.Produit;
-import com.example.demo.domain.model.Client;
+import com.merchant.model.Client;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -34,17 +34,17 @@ public class ClientPresentation {
         //cette liste nous sert d'objet de retour
         List<ClientDTO> ClientsRetournees = new ArrayList<>();
         //dans cette partie, on transforme les données en ClientDTO
-        for(Client client : ClientsBdd){
-            ClientDTO ClientAAjouter = mapper.toDto(client);
+        for(Client c : ClientsBdd){
+            ClientDTO ClientAAjouter = mapper.toDto(c);
             //partie Employes, on va interroger le module Employe 
             //et mettre à dispo les infos employés dans chaque Client
-            if(!client.getIdProduits().isEmpty()){
+            if(!c.getProduits().isEmpty()){
                 //ici onfait l'appel au module Employe via la couche application 
-                List<Produit> produits = produitServicePort.findByIds(client.getIdProduits());
+                ArrayList<Produit> produits = produitServicePort.findByIds(c.getProduits());
                 //on map les employés dans l'objet de retour associé et on l'ajoute à son Client
                 for(Produit produit : produits){
                     ProduitDTO produitDTO = mapper.toProduitDto(produit);
-                    ClientAAjouter.getProduit().add(produitDTO);
+                    ClientAAjouter.getProduits().add(produitDTO);
                 }
             }
             //on ajoute l'Client mappée dans le résultat de la requête
