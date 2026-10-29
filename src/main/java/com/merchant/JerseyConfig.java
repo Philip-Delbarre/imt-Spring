@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import com.merchant.adapter.in.rest.ClientPresentation;
-import com.merchant.model.Client;
+
 
 import jakarta.ws.rs.ApplicationPath;
 

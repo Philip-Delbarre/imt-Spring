@@ -1,7 +1,6 @@
 package com.merchant.adapter.in.rest;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
