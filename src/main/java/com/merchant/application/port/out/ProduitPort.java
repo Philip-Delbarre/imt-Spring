@@ -1,9 +1,9 @@
 package com.merchant.application.port.out;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.merchant.model.Produit;
 
 public interface ProduitPort {
-    List<Produit> findByIds(List<Integer> ids);
+    ArrayList<Produit> findByIds(ArrayList<Integer> ids);
 }

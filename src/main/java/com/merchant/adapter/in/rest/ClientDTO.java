@@ -9,7 +9,7 @@ public class ClientDTO {
     private String nom;
     private String prenom;
     private String eMail;
-    private ArrayList<Produit> produits; //# on attache une liste de  plursiurs produit à un client !
+    private ArrayList<Produit> produits= new ArrayList<>(); //# on attache une liste de  plursiurs produit à un client !
 
     public ClientDTO (int idClient, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
         this.idClient = idClient;

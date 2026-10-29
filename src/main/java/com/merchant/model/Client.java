@@ -8,7 +8,7 @@ public class Client {
     private String nom;
     private String prenom;
     private String eMail;
-    private ArrayList<Produit> produits; //# on attache une liste de  plursiurs produit à un client !
+    private ArrayList<Produit> produits= new ArrayList<>(); //# on attache une liste de  plursiurs produit à un client !
 
     public Client (int idClient, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
         this.id = idClient;

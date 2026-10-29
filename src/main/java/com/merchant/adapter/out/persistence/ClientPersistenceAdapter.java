@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.merchant.application.port.out.ClientRepositoryPort;
-import com.merchant.domain.model.Client;
+import com.merchant.model.Client;
 
 @Repository
 public class ClientPersistenceAdapter implements ClientRepositoryPort {
@@ -17,7 +17,7 @@ public class ClientPersistenceAdapter implements ClientRepositoryPort {
     // retourne une lsite de client
     @Override
     public ArrayList <Client> findAll() {
-        ArrayList <ClientJpaEntity> clientsBdd = repository.findAll();
+        ArrayList <ClientJpaEntity> clientsBdd = (ArrayList<ClientJpaEntity>) repository.findAll();
         ArrayList <Client> clients = new ArrayList<>();
         for(ClientJpaEntity entity : clientsBdd) {
             clients.add(toDomain(entity));
@@ -29,10 +29,10 @@ public class ClientPersistenceAdapter implements ClientRepositoryPort {
     @Override
     public void save(Client client) {
         repository.save(new ClientJpaEntity(
-                client.getId(), client.getNom(), client.getIdEmployes()));
+                client.getIdClient(), client.getNom(), client.getPrenom(), client.getEmail(), client.getProduits()));
     }
 
     private Client toDomain(ClientJpaEntity entity) {
-        return new Client(entity.getId(), entity.getNom(), entity.getIdEmployes());
+        return new Client(entity.getIdClient(), entity.getNom(), entity.getPrenom(), entity.geteMail(), entity.getProduits());
     }
 }

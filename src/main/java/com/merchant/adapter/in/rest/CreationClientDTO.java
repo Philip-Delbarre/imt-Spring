@@ -1,8 +1,6 @@
 package com.merchant.adapter.in.rest;
 
 import java.util.ArrayList;
-
-
 import com.merchant.model.Produit;
 
 public class CreationClientDTO {
@@ -10,9 +8,9 @@ public class CreationClientDTO {
     private String nom;
     private String prenom;
     private String eMail;
-    private ArrayList<Integer> produits; //# on attache une liste de  plursiurs produit à un client !
+    private ArrayList<Produit> produits; //# on attache une liste de  plursiurs produit à un client !
 
-    public CreationClientDTO (int idClient, String nom, String prenom, String eMail, ArrayList<Integer> produits) {
+    public CreationClientDTO (int idClient, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
         this.idClient = idClient;
         this.nom = nom;
         this.prenom = prenom;
@@ -51,13 +49,13 @@ public class CreationClientDTO {
         this.nom = nom;
     }
 
-    public  ArrayList <Integer> getProduits() {
+    public  ArrayList <Produit> getProduits() {
         return produits;
     }
 
     // attention c'est une affectation pas un enrichissmetn de liste !
 
-    public void setProduits (ArrayList<Integer> produits ) {
+    public void setProduits (ArrayList<Produit> produits ) {
         this.produits = produits ;
     }
 }

@@ -19,15 +19,15 @@ import jakarta.ws.rs.core.Response;
 public class ProduitHttpAdapter implements ProduitPort {
 
     @Override
-    public List<Produit> findByIds(List<Integer> idEmployes) {
+    public ArrayList<Produit> findByIds(ArrayList<Integer> idProduits ) {
         //décalration de l'objet permettant de déclencher un appel REST
         Client client = ClientBuilder.newClient();
         //on paramtre le lien d'appel, notre module Employe
         WebTarget target = client.target("http://localhost:8081/api/employes");
 
         // Ajout des query params représentant les identifiants d'employés
-        for (Integer id : idEmployes) {
-            target = target.queryParam("idEmployes", id);
+        for (Integer id : idProduits ) {
+            target = target.queryParam("idProduit", id);
         }
 
         Response response = target.request(MediaType.APPLICATION_JSON).get();

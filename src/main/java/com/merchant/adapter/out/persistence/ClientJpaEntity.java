@@ -1,7 +1,8 @@
 package com.merchant.adapter.out.persistence;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import com.merchant.model.Produit;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,34 +11,45 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "entreprises")
-public class EntrepriseJpaEntity {
+@Table(name = "clients")
+public class ClientJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
+    private int idClient;
     private String nom;
+    private String prenom;
+    private String eMail;
+    private ArrayList <Produit> produits = new ArrayList<>();
 
-    private List<Integer> idEmployes = new ArrayList<>();
-
-    protected EntrepriseJpaEntity() {
+    protected ClientJpaEntity() {
     }
 
-    public EntrepriseJpaEntity(int id, String nom, List<Integer> idEmployes) {
-        this.id = id;
+    public ClientJpaEntity(int idClient, String nom, String prenom, String eMail, ArrayList<Produit> produits) {
+        this.idClient = idClient;
         this.nom = nom;
-        this.idEmployes = new ArrayList<>(idEmployes);
+        this.prenom = prenom;
+        this.eMail = eMail;
+        this.produits = produits;
     }
 
-    public int getId() {
-        return id;
+    public int getIdClient() {
+        return idClient;
     }
 
-    public String getNom() {
+     public String getNom() {
         return nom;
     }
 
-    public List<Integer> getIdEmployes() {
-        return idEmployes;
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+     public String geteMail() {
+        return eMail;
+    }
+
+    public ArrayList<Produit> getProduits() {
+        return produits;
     }
 }

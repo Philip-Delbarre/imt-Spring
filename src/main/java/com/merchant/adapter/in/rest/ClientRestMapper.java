@@ -12,7 +12,7 @@ import com.merchant.model.Client;
 public class ClientRestMapper {
     public Client toDomain(CreationClientDTO dto) {
         ArrayList<Produit> id = new ArrayList<>();
-        //controle pour savoir si les employés sont envoyés par postman, si rien alors on initialise une liste vide
+        //controle pour savoir si les produits sont envoyés par postman, si rien alors on initialise une liste vide
         if(dto.getIdClient() != 0) {
             id.add( dto.getIdClient(), dto.getProduits().get(0));
         }
