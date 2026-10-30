@@ -12,7 +12,7 @@ import com.merchant.application.port.in.ClientServicePort;
 @Component 
 public class ClientService implements ClientServicePort {
     @Autowired 
-    private ClientRepositoryPort ClientRepository;
+    private ClientRepositoryPort ClientRepository; 
 
     @Override
     public ArrayList<Client> consulterClients() {

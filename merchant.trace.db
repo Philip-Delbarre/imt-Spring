@@ -1,0 +1,4 @@
+2026-10-30 16:30:15.553770+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "[*]ID_CLIENT CLIENTS"; attendu "INSERT"
+Syntax error in SQL statement "[*]ID_CLIENT CLIENTS"; expected "INSERT"; SQL statement:
+ID_CLIENT CLIENTS [42001-232]

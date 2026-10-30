@@ -67,6 +67,6 @@ public class ClientPresentation {
     @POST
     @Consumes("application/json")
     public void creationClient(CreationClientDTO ClientDTO) {
-        ClientServicePort.creerClient(mapper.toDomain(ClientDTO));
+        clientServicePort.creerClient(mapper.toDomain(ClientDTO));
     }
 }

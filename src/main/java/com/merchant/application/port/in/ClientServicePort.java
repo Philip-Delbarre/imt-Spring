@@ -11,8 +11,5 @@ import com.merchant.model.Client;
 public interface ClientServicePort {
     ArrayList<Client> consulterClients();
 
-    static void creerClient(Client client) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'creerClient'");
-    }
+    void creerClient(Client client) ;
 }
