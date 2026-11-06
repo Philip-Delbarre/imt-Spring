@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.*;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.merchant.model.Client;
@@ -41,7 +42,7 @@ class MerchantApplicationTests {
 
   @Test
     void testGetUserById() throws Exception {
-        mockMvc.perform(get("/api/users/{id}", 123))
+        mockMvc.perform(get("/api/clients/{id}", 1))
                .andExpect(status().isOk())
                .andExpect(content().string("User: 123"));
     }
@@ -50,9 +51,9 @@ class MerchantApplicationTests {
     // tester une levée d'exception
     @Test
     void testGetUserByIdNotFound() throws Exception {
-        mockMvc.perform(get("/api/users/{id}", 999))
+        mockMvc.perform(get("/api/clients/{id}", 999))
                .andExpect(status().isNotFound())
-               .andExpect(content().string("User not found"));  
+               .andExpect(content().string("Client not found"));  
 
     }
 }
