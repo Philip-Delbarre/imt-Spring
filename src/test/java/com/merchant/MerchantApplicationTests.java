@@ -1,31 +1,36 @@
 package com.merchant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.autoconfigure.orm.*;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
 import com.merchant.model.Client;
-
+import com.merchant.adapter.in.rest.ClientRestMapper;
 
 // Mock VMC est essentiel piour tester les endpoints REST sans lancer le serveur complet. Il simule les requêtes HTTP et permet de vérifier les réponses.
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class MerchantApplicationTests {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @LocalServerPort
+    private int port =8080;
+
+
+
+    private final TestRestTemplate restTemplate = new TestRestTemplate();
 
     @Test
     void testCreationClient() {
@@ -39,21 +44,25 @@ class MerchantApplicationTests {
     }
 
 // test endpoint produit controller
+// // la réposne peut ^tre null
+ @SuppressWarnings("null") 
+@Test
 
-  @Test
-    void testGetUserById() throws Exception {
-        mockMvc.perform(get("/api/clients/{id}", 1))
-               .andExpect(status().isOk())
-               .andExpect(content().string("User: 123"));
-    }
+void testMapperOk() {
+    
+    ClientRestMapper mapper = new ClientRestMapper();
+    Client clientFictif = new Client(12, "Doe", "John", "chat@fr", new ArrayList<>());
+    assertNotNull(mapper.toDto(clientFictif));  
+
+}
 
 
     // tester une levée d'exception
     @Test
-    void testGetUserByIdNotFound() throws Exception {
-        mockMvc.perform(get("/api/clients/{id}", 999))
-               .andExpect(status().isNotFound())
-               .andExpect(content().string("Client not found"));  
-
+    void testGetClientInconnu() {
+        ResponseEntity<String> reponse =
+                restTemplate.getForEntity("http://localhost:" + port + "/api/clients/9999", String.class);
+        assertEquals(HttpStatus.NOT_FOUND, reponse.getStatusCode());
+        assertTrue(reponse.getBody().contains("Client 9999 introuvable"));
     }
 }
